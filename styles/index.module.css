@@ -1,0 +1,67 @@
+.header {
+  margin: 50px 0;
+}
+
+.boardContainer {
+  text-align: center;
+  width: 400px;
+  margin: auto;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #2d2d2e;
+  display: inline-block;
+  margin: 0px;
+}
+
+.boxColor {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #2d2d2e;
+  display: inline-block;
+  margin: 0px;
+  background-color: red;
+}
+
+.box:hover {
+  cursor: pointer;
+  box-shadow: 0px 3px 8px rgb(183, 195, 199);
+}
+
+.reset {
+  margin-top: 50px;
+  padding: 10px 30px;
+  border-radius: 5px;
+  border: none;
+  font-family: "Quicksand", sans-serif;
+}
+.reset:hover {
+  cursor: pointer;
+  box-shadow: 0px 3px 8px rgb(183, 195, 199);
+}
+
+.alert {
+  width: 30%;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  left: 35%;
+  opacity: 0;
+  background-color: white;
+  z-index: 2;
+  padding: 25px;
+  box-sizing: border-box;
+  box-shadow: 0px 3px 8px rgb(183, 195, 199);
+  border-radius: 5px;
+  transition: 0.5s ease-in-out;
+  animation-fill-mode: both;
+}
+
+.alertAppear {
+  opacity: 1;
+  bottom: 100px;
+}
+
+/*# sourceMappingURL=main.css.map */

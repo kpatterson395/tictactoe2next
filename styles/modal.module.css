@@ -1,0 +1,13 @@
+.modal {
+  position: absolute;
+  box-sizing: border-box;
+  z-index: 100;
+  top: 30%;
+  left: 35%;
+  width: 30%;
+  height: auto;
+  padding: 2em;
+  text-align: center;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+}
