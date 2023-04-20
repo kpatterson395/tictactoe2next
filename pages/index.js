@@ -117,7 +117,7 @@ export default function TicTacToe() {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1 className={styles.header}>tic tac toe</h1>
       <h2>{`Welcome ${gamePlay}`}</h2>
       <h3>{`${turn === 1 ? "Player 1" : "Player 2"} - it's your turn!`}</h3>

@@ -21,33 +21,47 @@ const NewGame = ({ gamePlay, setGamePlay, gameCode, setGameCode }) => {
   };
 
   return (
-    <div className={styles.modal}>
-      {!gameCode && (
-        <div>
-          New Game!
-          <br />
-          Enter a game code here:
-          <form>
-            <input
-              type="text"
-              name="gameCode"
-              id="gameCode"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-            />
-            <button onClick={handleCode}>Submit</button>
-          </form>
-          <button onClick={() => setGamePlay("computer")}>
-            Play against computer
-          </button>
-          or
-          <button onClick={() => setGamePlay("waiting")}>
-            Play against a friend
-          </button>
-        </div>
-      )}
-      {gamePlay === "waiting" && <h3>Waiting on player 2</h3>}
-      {gameCode && <div>Your game code is: {gameCode}</div>}
+    <div className={styles.modalContainer}>
+      <div className={styles.modal}>
+        {!gameCode && (
+          <div>
+            <h1>Start a New Game</h1>
+            <div>
+              <button
+                className={styles.button}
+                onClick={() => setGamePlay("computer")}
+              >
+                Play against computer
+              </button>
+              or
+              <button
+                className={styles.button}
+                onClick={() => setGamePlay("waiting")}
+              >
+                Play against a friend
+              </button>
+            </div>
+            <div className={styles.newGameDiv}>
+              Have a game code? Enter here:
+              <form className={styles.form}>
+                <input
+                  className={styles.input}
+                  type="text"
+                  name="gameCode"
+                  id="gameCode"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                />
+                <button className={styles.button} onClick={handleCode}>
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+        {gamePlay === "waiting" && <h3>Waiting on player 2</h3>}
+        {gameCode && <div>Your game code is: {gameCode}</div>}
+      </div>
     </div>
   );
 };
