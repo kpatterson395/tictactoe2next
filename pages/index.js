@@ -90,15 +90,19 @@ export default function TicTacToe() {
   }, [player1Squares, player2Squares]);
 
   useEffect(() => {
-    if (turn === 2 && gamePlay === "computer") {
-      console.log(player1Squares, player2Squares);
+    if (turn === 2 && gamePlay === "computer" && !winner) {
       let sq = pickRandomSquare(player1Squares, player2Squares);
-      setPlayer2Squares((prevState) => [...prevState, sq]);
-      setTurn(1);
+      setTimeout(() => {
+        setPlayer2Squares((prevState) => [...prevState, sq]);
+        setTurn(1);
+      }, 1000);
     }
   }, [turn]);
 
   const handleClick = async (id) => {
+    if (winner) {
+      return;
+    }
     if (player1Squares.includes(id) || player2Squares.includes(id)) {
       setAlert(true);
     } else if (turn === 1 && gamePlay === "player1") {
@@ -144,7 +148,7 @@ export default function TicTacToe() {
         player2Squares={player2Squares}
       />
       <button className={`reset ${styles.button}`} onClick={reset}>
-        Reset
+        New Game
       </button>
       <div
         className={
@@ -153,7 +157,9 @@ export default function TicTacToe() {
       >
         That square has been used, try again!
       </div>
-      {winner && <GameOver winner={winner} handleReset={reset} />}
+      {winner && (
+        <GameOver gamePlay={gamePlay} winner={winner} handleReset={reset} />
+      )}
       {(!gamePlay || gamePlay === "waiting") && (
         <NewGame
           gamePlay={gamePlay}
@@ -174,17 +180,3 @@ const getInfo = () => {
     })
     .catch((error) => console.log(error));
 };
-
-// export async function getServerSideProps() {
-//   try {
-//     const client = await clientPromise;
-//     const db = client.db("tictactoe");
-//     const gameplay = await db.collection("gameplay").find({}).toArray();
-
-//     return {
-//       props: { game: JSON.parse(JSON.stringify(gameplay)) },
-//     };
-//   } catch (e) {
-//     console.error(e);
-//   }
-// }

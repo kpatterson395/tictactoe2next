@@ -22,7 +22,7 @@
   border-radius: 10px;
 }
 .bottom {
-  margin-top: 50px;
+  margin-top: 1em;
 }
 
 .button {
@@ -30,11 +30,12 @@
   color: #f6fff8;
   border: none;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 7px 12px;
   margin: 5px;
 }
 .button:hover {
   cursor: pointer;
+  background-color: #a4c3b2;
 }
 
 .input {
@@ -45,4 +46,8 @@
 
 .newGameDiv {
   margin-top: 50px;
+}
+
+.friendDiv {
+  padding: 2em 1em;
 }
