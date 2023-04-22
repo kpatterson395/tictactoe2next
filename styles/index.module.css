@@ -13,13 +13,6 @@
   width: 400px;
   margin: auto;
 }
-.box {
-  width: 100px;
-  height: 100px;
-  border: 2px solid #2d2d2e;
-  display: inline-block;
-  margin: 0px;
-}
 
 .boxColor {
   width: 100px;
@@ -28,11 +21,6 @@
   display: inline-block;
   margin: 0px;
   background-color: red;
-}
-
-.box:hover {
-  cursor: pointer;
-  box-shadow: 0px 3px 8px rgb(183, 195, 199);
 }
 
 .reset {
@@ -70,4 +58,15 @@
   bottom: 100px;
 }
 
+.button {
+  background-color: #6b9080;
+  color: #f6fff8;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+.button:hover {
+  cursor: pointer;
+}
 /*# sourceMappingURL=main.css.map */

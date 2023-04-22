@@ -13,11 +13,18 @@ const Box = ({ id, handleClick, color }) => {
     height: "100px",
     border: "2px solid #2d2d2e",
     display: "inline-block",
-    margin: "0px",
+    margin: "1px",
     backgroundColor: bgColor,
   };
 
-  return <div style={styles} id={id} onClick={() => handleClick(id)}></div>;
+  return (
+    <div
+      style={styles}
+      className="box"
+      id={id}
+      onClick={() => handleClick(id)}
+    ></div>
+  );
 };
 
 export default Box;

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../styles/index.module.css";
 import { useEffect, useState } from "react";
-import { checkForWinner, gameOver } from "../lib/helpers";
+import { checkForWinner, gameOver, pickRandomSquare } from "../lib/helpers";
 import GameOver from "../component/GameOver";
 import NewGame from "../component/NewGame";
 import axios from "axios";
@@ -84,6 +84,15 @@ export default function TicTacToe() {
     }
   }, [player1Squares, player2Squares]);
 
+  useEffect(() => {
+    if (turn === 2 && gamePlay === "computer") {
+      console.log(player1Squares, player2Squares);
+      let sq = pickRandomSquare(player1Squares, player2Squares);
+      setPlayer2Squares((prevState) => [...prevState, sq]);
+      setTurn(1);
+    }
+  }, [turn]);
+
   const handleClick = async (id) => {
     if (player1Squares.includes(id) || player2Squares.includes(id)) {
       setAlert(true);
@@ -103,6 +112,9 @@ export default function TicTacToe() {
       });
       setPlayer2Squares((prevState) => [...prevState, id]);
       setTurn(1);
+    } else if (turn === 1 && gamePlay === "computer") {
+      setPlayer1Squares((prevState) => [...prevState, id]);
+      setTurn(2);
     }
   };
 
@@ -126,7 +138,7 @@ export default function TicTacToe() {
         player1Squares={player1Squares}
         player2Squares={player2Squares}
       />
-      <button onClick={reset} className="reset">
+      <button className={`reset ${styles.button}`} onClick={reset}>
         Reset
       </button>
       <div
