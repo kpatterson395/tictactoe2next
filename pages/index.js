@@ -1,7 +1,12 @@
 import Head from "next/head";
 import styles from "../styles/index.module.css";
 import { useEffect, useState } from "react";
-import { checkForWinner, gameOver, pickRandomSquare } from "../lib/helpers";
+import {
+  checkForWinner,
+  gameOver,
+  pickRandomSquare,
+  renderText,
+} from "../lib/helpers";
 import GameOver from "../component/GameOver";
 import NewGame from "../component/NewGame";
 import axios from "axios";
@@ -131,8 +136,8 @@ export default function TicTacToe() {
   return (
     <div className={styles.container}>
       <h1 className={styles.header}>tic tac toe</h1>
-      <h2>{`Welcome ${gamePlay}`}</h2>
-      <h3>{`${turn === 1 ? "Player 1" : "Player 2"} - it's your turn!`}</h3>
+      <h2>{gamePlay !== "computer" && `Welcome ${gamePlay}`}</h2>
+      <h3>{renderText(turn, gamePlay)}</h3>
       <BoardContainer
         handleClick={handleClick}
         player1Squares={player1Squares}

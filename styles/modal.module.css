@@ -15,11 +15,14 @@
   top: 30%;
   left: 35%;
   width: 30%;
-  height: auto;
+  height: 40%;
   padding: 2em;
   text-align: center;
   background-color: #eeecec;
   border-radius: 10px;
+}
+.bottom {
+  margin-top: 50px;
 }
 
 .button {

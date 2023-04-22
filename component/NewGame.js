@@ -1,6 +1,7 @@
 import styles from "../styles/modal.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loader from "./Loader";
 
 const NewGame = ({ gamePlay, setGamePlay, gameCode, setGameCode }) => {
   const [code, setCode] = useState("");
@@ -59,8 +60,13 @@ const NewGame = ({ gamePlay, setGamePlay, gameCode, setGameCode }) => {
             </div>
           </div>
         )}
-        {gamePlay === "waiting" && <h3>Waiting on player 2</h3>}
-        {gameCode && <div>Your game code is: {gameCode}</div>}
+        {gamePlay === "waiting" && (
+          <div>
+            <Loader />
+            <h3>Waiting on player 2</h3>
+            {gameCode && <div>Your game code is: {gameCode}</div>}
+          </div>
+        )}
       </div>
     </div>
   );
