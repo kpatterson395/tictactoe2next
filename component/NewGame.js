@@ -27,8 +27,8 @@ const NewGame = ({ gamePlay, setGamePlay, gameCode, setGameCode }) => {
       <div className={styles.modal}>
         {!option && (
           <div>
-            <h1>Welcome to tic tac toe</h1>
-            <h3>Choose an option below to get started:</h3>
+            <h2>Welcome to tic tac toe</h2>
+            <h4>Choose an option below to get started:</h4>
             <div>
               <button
                 className={styles.button}

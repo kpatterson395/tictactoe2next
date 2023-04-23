@@ -7,13 +7,15 @@ const GameOver = ({ gamePlay, winner, handleReset, handleClose }) => {
   console.log(gamePlay, winner);
   const [lost, setLost] = useState(true);
   useEffect(() => {
-    if (
-      winner.split("").includes("1") &&
-      (gamePlay === "player1" || gamePlay === "computer")
-    ) {
-      setLost(false);
-    } else if (winner.split("").includes("2") && gamePlay === "player2") {
-      setLost(false);
+    if (winner) {
+      if (
+        winner.includes("1") &&
+        (gamePlay === "player1" || gamePlay === "computer")
+      ) {
+        setLost(false);
+      } else if (winner.includes("2") && gamePlay === "player2") {
+        setLost(false);
+      }
     }
   }, []);
   return (
