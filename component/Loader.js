@@ -1,4 +1,5 @@
-const Loader = () => {
+const Loader = ({ turn = false }) => {
+  const fill = !turn ? "#6B9080" : "white";
   return (
     <div>
       <svg
@@ -13,7 +14,7 @@ const Loader = () => {
         enable-background="new 0 0 0 0"
         xmlSpace="preserve"
       >
-        <rect x="40" y="50" width="4" height="10" fill="#6B9080">
+        <rect x="40" y="50" width="4" height="10" fill={fill}>
           <animateTransform
             attributeType="xml"
             attributeName="transform"
@@ -24,7 +25,7 @@ const Loader = () => {
             repeatCount="indefinite"
           />
         </rect>
-        <rect x="50" y="50" width="4" height="10" fill="#6B9080">
+        <rect x="50" y="50" width="4" height="10" fill={fill}>
           <animateTransform
             attributeType="xml"
             attributeName="transform"
@@ -35,7 +36,7 @@ const Loader = () => {
             repeatCount="indefinite"
           />
         </rect>
-        <rect x="60" y="50" width="4" height="10" fill="#6B9080">
+        <rect x="60" y="50" width="4" height="10" fill={fill}>
           <animateTransform
             attributeType="xml"
             attributeName="transform"

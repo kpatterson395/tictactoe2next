@@ -5,7 +5,7 @@
 }
 
 .header {
-  margin: 50px 0;
+  margin-top: 50px;
 }
 
 .boardContainer {
@@ -69,4 +69,24 @@
 .button:hover {
   cursor: pointer;
 }
-/*# sourceMappingURL=main.css.map */
+
+.player1 {
+  color: #7a565b;
+  margin-bottom: 0;
+}
+
+.player2 {
+  color: #56677a;
+  margin-bottom: 0;
+}
+.player2box {
+  background-color: #56677a;
+  width: 15px;
+  height: 15px;
+}
+
+.player1box {
+  background-color: #7a565b;
+  width: 15px;
+  height: 15px;
+}

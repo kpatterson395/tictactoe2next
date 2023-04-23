@@ -11,6 +11,7 @@ import GameOver from "../component/GameOver";
 import NewGame from "../component/NewGame";
 import axios from "axios";
 import BoardContainer from "../component/BoardContainer";
+import Loader from "../component/Loader";
 
 export default function TicTacToe() {
   const [player1Squares, setPlayer1Squares] = useState([]);
@@ -21,6 +22,7 @@ export default function TicTacToe() {
   const [gamePlay, setGamePlay] = useState("");
   const [gameCode, setGameCode] = useState("");
   const [intervalId, setIntervalId] = useState();
+  const [gameOverModal, setGameOverModal] = useState(false);
 
   useEffect(() => {
     if (gameCode) {
@@ -82,10 +84,16 @@ export default function TicTacToe() {
   useEffect(() => {
     if (checkForWinner(player1Squares)) {
       setWinner("Player 1 wins!");
+      setGameOverModal(true);
+      clearInterval(intervalId);
     } else if (checkForWinner(player2Squares)) {
       setWinner("Player 2 wins!");
+      setGameOverModal(true);
+      clearInterval(intervalId);
     } else if (gameOver(player1Squares, player2Squares)) {
       setWinner("It's a tie! Try again");
+      setGameOverModal(true);
+      clearInterval(intervalId);
     }
   }, [player1Squares, player2Squares]);
 
@@ -137,15 +145,33 @@ export default function TicTacToe() {
     clearInterval(intervalId);
   };
 
+  const isTurn = () => {
+    return (
+      gamePlay.includes(turn.toString()) ||
+      (turn === 1 && gamePlay === "computer")
+    );
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.header}>tic tac toe</h1>
-      <h2>{gamePlay !== "computer" && `Welcome ${gamePlay}`}</h2>
-      <h3>{renderText(turn, gamePlay)}</h3>
+      <h2 className={gamePlay === "player2" ? styles.player2 : styles.player1}>
+        {gamePlay !== "computer" && `Welcome ${gamePlay}`}{" "}
+      </h2>
+      <h3 className={gamePlay === "player2" ? styles.player2 : styles.player1}>
+        {renderText(turn, gamePlay, winner)}
+        <span
+          className={
+            gamePlay === "player2" ? styles.player2box : styles.player1box
+          }
+        ></span>
+      </h3>
+      <Loader turn={winner || isTurn()} />
       <BoardContainer
         handleClick={handleClick}
         player1Squares={player1Squares}
         player2Squares={player2Squares}
+        turn={isTurn()}
       />
       <button className={`reset ${styles.button}`} onClick={reset}>
         New Game
@@ -157,8 +183,13 @@ export default function TicTacToe() {
       >
         That square has been used, try again!
       </div>
-      {winner && (
-        <GameOver gamePlay={gamePlay} winner={winner} handleReset={reset} />
+      {gameOverModal && (
+        <GameOver
+          gamePlay={gamePlay}
+          winner={winner}
+          handleReset={reset}
+          handleClose={setGameOverModal}
+        />
       )}
       {(!gamePlay || gamePlay === "waiting") && (
         <NewGame

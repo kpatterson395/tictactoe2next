@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/index.module.css";
 
-const Box = ({ id, handleClick, color }) => {
+const Box = ({ id, handleClick, color, turn }) => {
   const [bgColor, setBgColor] = useState();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Box = ({ id, handleClick, color }) => {
   return (
     <div
       style={styles}
-      className="box"
+      className={`box ${turn && "box-active"}`}
       id={id}
       onClick={() => handleClick(id)}
     ></div>

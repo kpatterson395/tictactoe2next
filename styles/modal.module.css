@@ -16,7 +16,7 @@
   left: 35%;
   width: 30%;
   height: 40%;
-  padding: 2em;
+  padding: 1em;
   text-align: center;
   background-color: #eeecec;
   border-radius: 10px;
@@ -50,4 +50,18 @@
 
 .friendDiv {
   padding: 2em 1em;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 5%;
+  font-size: 26px;
+  border: none;
+  background-color: #eeecec;
+}
+
+.closeButton:hover {
+  cursor: pointer;
 }
