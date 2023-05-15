@@ -4,7 +4,6 @@ import Confetti from "./Confetti";
 import Sound from "react-sound";
 
 const GameOver = ({ gamePlay, winner, handleReset, handleClose }) => {
-  console.log(gamePlay, winner);
   const [lost, setLost] = useState(true);
   useEffect(() => {
     if (winner) {
