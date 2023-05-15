@@ -87,13 +87,17 @@ export default function TicTacToe() {
       setGameOverModal(true);
       clearInterval(intervalId);
     } else if (checkForWinner(player2Squares)) {
-      setWinner("Player 2 wins!");
-      setGameOverModal(true);
-      clearInterval(intervalId);
+      setTimeout(() => {
+        setWinner("Player 2 wins!");
+        setGameOverModal(true);
+        clearInterval(intervalId);
+      }, 500);
     } else if (gameOver(player1Squares, player2Squares)) {
-      setWinner("It's a tie! Try again");
-      setGameOverModal(true);
-      clearInterval(intervalId);
+      setTimeout(() => {
+        setWinner("It's a tie! Try again");
+        setGameOverModal(true);
+        clearInterval(intervalId);
+      }, 500);
     }
   }, [player1Squares, player2Squares]);
 
@@ -142,6 +146,7 @@ export default function TicTacToe() {
     setPlayer2Squares([]);
     setGamePlay("");
     setGameCode("");
+    setGameOverModal("");
     clearInterval(intervalId);
   };
 
